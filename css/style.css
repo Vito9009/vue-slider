@@ -24,7 +24,6 @@ img{
 }
 
 .my_preview-images .main-pic{
-    opacity: 0.5;
     height: calc(100% / 5);
 }
 
@@ -66,6 +65,10 @@ img{
 
 .container-preview-img .next{
     bottom: 10px;
+}
+
+.opacity{
+    opacity: 0.5;
 }
 
 .my_preview-selected{

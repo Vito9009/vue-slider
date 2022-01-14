@@ -17,6 +17,7 @@ let app = new Vue({
     el: '#box',
     data:{
         startingposition: 0,
+        opacity: false,
         infoimg: [
             {
                 image: 'img/01.jpg',
@@ -44,6 +45,24 @@ let app = new Vue({
                 infotext: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam.'
             }
         ]
+    },
+
+    methods:{
+        prev: function(){
+            if (this.startingposition == 0){
+                this.startingposition = this.infoimg.length - 1;
+            }else{
+                this.startingposition--;
+            }
+        },
+
+        next: function(){
+            if (this.startingposition == this.infoimg.length - 1){
+                this.startingposition = 0;
+            }else{
+                this.startingposition++;
+            }
+        },      
     }
 })
 
