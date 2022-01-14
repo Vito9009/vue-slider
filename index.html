@@ -10,12 +10,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div id="box">
+        <div class="container-fluid d-flex justify-content-center align-item-center row g-0">
 
-    <div id="container">
-        <h1>{{ message }}</h1>
+            <div class="col-10">
+                <div class="my_main-picture col-12">
+    
+                    <img v-bind:src="infoimg[startingposition].image" alt="">
+     
+                    <div class="my_pic-info">
+                        <h5 id="title-info-pic">{{infoimg[startingposition].country}}</h5>
+                        <p id="info-pic">{{infoimg[startingposition].infotext}}</p>
+                    </div>
 
-        <img v-bind:src="myImg" alt="">
+                    
+                </div>
+         
+            </div>
+    
+            <div class="container-preview-img d-flex flex-column justify-content-center align-items-center col-2">
+                <div class="my_preview-images d-flex flex-column justify-content-center align-items-center" v-for="(img, index) in infoimg">
+    
+                    <img v-bind:src="infoimg[startingposition].image" alt="">   
+                
+            
+                </div>
+        
+            </div>
+        
+        
+        </div>
     </div>
+    
+
+   
 
 
     <!--

@@ -14,36 +14,40 @@ Consigli del giorno:
 */
 
 let app = new Vue({
-    el: '#',
+    el: '#box',
     data:{
-        
+        startingposition: 0,
+        infoimg: [
+            {
+                image: 'img/01.jpg',
+                country: 'Svezia',
+                infotext: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+            },
+            {
+                image: 'img/02.jpg',
+                country: 'Svizzera',
+                infotext: 'Lorem ipsum.'
+            },
+            {
+                image: 'img/03.jpg',
+                country: 'Gran Bretagna',
+                infotext: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+            },
+            {
+                image: 'img/04.jpg',
+                country: 'Germania',
+                infotext: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam.'
+            },
+            {
+                image: 'img/05.jpg',
+                country: 'Paradise',
+                infotext: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam.'
+            }
+        ]
     }
 })
 
 /*
-const imgArray = [
-    'img/01.jpg',
-    'img/02.jpg',
-    'img/03.jpg',
-    'img/04.jpg',
-    'img/05.jpg'
-];
-
-const titleArray = [
-    'Svezia',
-    'Svizzera',
-    'Gran Bretagna',
-    'Germania',
-    'Paradise'
-];
-
-const textArray = [
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-    'Lorem ipsum',
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-    'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-    'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-];
 
 const mainPicture = document.querySelector(".my_main-picture");    // Selettore contenitore main
 const previewImage = document.querySelector(".my_preview-images");// Selettore contenitore preview
