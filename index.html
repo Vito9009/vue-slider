@@ -29,7 +29,11 @@
             </div>
     
             <div class="container-preview-img d-flex flex-column justify-content-center align-items-center col-2">
-                <div class="my_preview-images opacity d-flex flex-column justify-content-center align-items-center" v-for="(img, index) in infoimg" v-bind:class="corrente(index)" @click="startingposition = index">
+                <div class="my_preview-images opacity d-flex flex-column justify-content-center align-items-center" 
+                v-for="(img, index) in infoimg" 
+                v-bind:class="corrente(index)" 
+                @click="startingposition = index" 
+                v-on:mouseleave="autoplay" v-on:mouseover="stopautoplay">
     
                     <img v-bind:src="img.image" alt="">
                 
@@ -37,46 +41,13 @@
                 </div>
 
                 <div class="prev" @click="prev()"><i class="fas fa-chevron-up"></i></div>
-                <div class="next" @click="next(); autoplay()"><i class="fas fa-chevron-down"></i></div>
+                <div class="next" @click="next()"><i class="fas fa-chevron-down"></i></div>
     
             </div>
         
         
         </div>
     </div>
-    
-
-    
-
-
-    <!--
-    <div class="container-fluid d-flex justify-content-center align-item-center row g-0">
-
-        <div class="col-10">
-            <div class="my_main-picture col-12">
-
-                
-     
-            </div>
-     
-        </div>
-
-        <div class="container-preview-img d-flex flex-column justify-content-center align-items-center col-2">
-            <div class="my_preview-images d-flex flex-column justify-content-center align-items-center">
-
-
-            
-        
-            </div>
-    
-            <div class="prev"><i class="fas fa-chevron-up"></i></div>
-            <div class="next"><i class="fas fa-chevron-down"></i></div>
-        </div>
-    
-    
-    </div>
-
-    -->
 
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>

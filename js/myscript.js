@@ -17,6 +17,7 @@ let app = new Vue({
     el: '#box',
     data:{
         startingposition: 0,
+        playandstop: "",
         infoimg: [
             {
                 image: 'img/01.jpg',
@@ -43,7 +44,7 @@ let app = new Vue({
                 country: 'Paradise',
                 infotext: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam.'
             }
-        ]
+        ],
     },
     
     methods:{
@@ -63,116 +64,30 @@ let app = new Vue({
             }
         },
 
-        corrente: function(index){              // Aggiunta classe my_preview-selected quando l'immagine viene selezionata
+        corrente: function(index){                  // Aggiunta classe my_preview-selected quando l'immagine viene selezionata
             if(index == this.startingposition){
                 return "my_preview-selected";
             }else{
                 return "";
             }            
         },
-
-        autoplay: function(){                   // Le immagini scorrono da sole (dopo avere cliccato sul pulsante next perché la funzione è inserita nel @click)
-            setInterval(() => {
+        
+        autoplay: function(){                           // Le immagini scorrono da sole
+            this.playandstop = setInterval(() => {      // (fino a quando non si passa il mouse sullo slider laterale)
                 this.startingposition++;
 
                 if (this.startingposition == this.infoimg.length){
                     this.startingposition = 0;
                 }
             }, 3000);
-        },      
-    }
+        },
+
+        stopautoplay: function() {                   // Le immagini smettono di scorrono da sole 
+            clearInterval(this.playandstop);        // (quando si passa il mouse sullo slider laterale)
+          }
+    },
+        
+    beforeMount: function() {           // Metodo Lifecycle Hooks trovato online per il funzionamento autoplay,
+        this.autoplay();                // ma da rivedere (beforeMount e mounted, beforeCreate e created, 
+    }                                   // beforeUpdate e updated, beforeDestroy e destroyed) 
 });
-
-/*
-
-const mainPicture = document.querySelector(".my_main-picture");    // Selettore contenitore main
-const previewImage = document.querySelector(".my_preview-images");// Selettore contenitore preview
-
-// Definizione variabili
-let imgShowed = "";
-let imgSide = "";
-let classActive = 0;
-
-// Cicli for per inserimento immagini e testo in html
-for (let i = 0; i < imgArray.length; i++){
-    imgShowed += `
-    <div class="picture-show" id="img-num-${i}">
-        <img id="main-pic" src="${imgArray[i]}" alt="">
-
-        <div class="my_pic-info">
-            <h5 id="title-info-pic">${titleArray[i]}</h5>
-            <p id="info-pic">${textArray[i]}</p>
-        </div>
-
-    </div>
-    `;
-}
-
-for (let i = 0; i < imgArray.length; i++){
-    imgSide += `
-    <div class="my_preview-images d-flex flex-column justify-content-center align-items-center col-12" id="img-preview-num-${i}">
-            <img class="main-pic h-100" src="${imgArray[i]}" alt="">
-    </div>
-    `;
-}
-
-mainPicture.innerHTML = imgShowed;
-previewImage.innerHTML = imgSide;
-
-let mainImgActive = document.getElementById("img-num-" + classActive); //Rendere visibile l'immagine principale
-mainImgActive.classList.add("active");
-let previewImgActive = document.getElementById("img-preview-num-" + classActive);
-previewImgActive.classList.add("my_preview-selected");
-
-//CLICK PULSANTI 
-
-let btnPrev = document.querySelector(".prev");
-let btnNext = document.querySelector(".next");
-
-btnPrev.addEventListener("click", function (){ //btn Prev
-    classActive--;
-    if (classActive < 0){ //LOOP VERSO L'ALTO
-        classActive = 4;
-    }
-
-    if (previewImgActive.classList.contains("my_preview-selected")){ // INSERISCE BORDO ALL=IMMAGINE PREVIEW SELEZIONATA
-        previewImgActive.classList.toggle("my_preview-selected");
-    }
-
-    if (mainImgActive.classList.contains("active")){ // DISPLAYBLOCK SULL'IMMAGINE SELEZIONATA (NELLA SITUAZIONE PRECEDENTE L'IMMAGINE È IN DISPLAY NONE)
-        mainImgActive.classList.toggle("active");
-    }
-
-    mainImgActive = document.getElementById("img-num-" + classActive); //AGGIUNTA CLASSE ACTIVE
-    mainImgActive.classList.add("active");
-    
-    previewImgActive = document.getElementById("img-preview-num-" + classActive); //AGGIUNTA CLASSE BORDO E OPACITY
-    previewImgActive.classList.add("my_preview-selected");
-}
-);
-
-btnNext.addEventListener("click", function (){ //btn Next
-    classActive++;
-    if (classActive > 4){  //LOOP VERSO IL BASSO
-        classActive = 0;
-    }
-
-    if (previewImgActive.classList.contains("my_preview-selected")){ // INSERISCE BORDO ALL=IMMAGINE PREVIEW SELEZIONATA
-        previewImgActive.classList.toggle("my_preview-selected");
-    }
-
-    if (mainImgActive.classList.contains("active")){ // DISPLAYBLOCK SULL'IMMAGINE SELEZIONATA (NELLA SITUAZIONE PRECEDENTE L'IMMAGINE È IN DISPLAY NONE)
-        mainImgActive.classList.toggle("active");
-    }
-
-    mainImgActive = document.getElementById("img-num-" + classActive); //AGGIUNTA CLASSE ACTIVE
-    mainImgActive.classList.add("active");
-    
-    previewImgActive = document.getElementById("img-preview-num-" + classActive); //AGGIUNTA CLASSE BORDO E OPACITY
-    previewImgActive.classList.add("my_preview-selected");
-}
-);
-
-// PROBLEMA CON IMMAGINI LATERALI (ALTEZZA ESTREMAMENTE BASSA)
-
-*/
