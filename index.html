@@ -29,15 +29,15 @@
             </div>
     
             <div class="container-preview-img d-flex flex-column justify-content-center align-items-center col-2">
-                <div class="my_preview-images opacity d-flex flex-column justify-content-center align-items-center" v-for="(img, index) in infoimg"  >
+                <div class="my_preview-images opacity d-flex flex-column justify-content-center align-items-center" v-for="(img, index) in infoimg" v-bind:class="corrente(index)" @click="startingposition = index">
     
-                    <img v-bind:src="img.image" alt="">   
+                    <img v-bind:src="img.image" alt="">
                 
             
                 </div>
 
                 <div class="prev" @click="prev()"><i class="fas fa-chevron-up"></i></div>
-                <div class="next" @click="next()"><i class="fas fa-chevron-down"></i></div>
+                <div class="next" @click="next(); autoplay()"><i class="fas fa-chevron-down"></i></div>
     
             </div>
         

@@ -23,8 +23,9 @@ img{
     object-fit: cover;
 }
 
-.my_preview-images .main-pic{
+.my_preview-images{
     height: calc(100% / 5);
+    width: 100%;
 }
 
 

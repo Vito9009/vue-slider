@@ -17,7 +17,6 @@ let app = new Vue({
     el: '#box',
     data:{
         startingposition: 0,
-        opacity: false,
         infoimg: [
             {
                 image: 'img/01.jpg',
@@ -46,9 +45,9 @@ let app = new Vue({
             }
         ]
     },
-
+    
     methods:{
-        prev: function(){
+        prev: function(){                                   // Indietro cliccando sulla freccia superiore
             if (this.startingposition == 0){
                 this.startingposition = this.infoimg.length - 1;
             }else{
@@ -56,15 +55,33 @@ let app = new Vue({
             }
         },
 
-        next: function(){
+        next: function(){                                   // Avanti cliccando sulla freccia inferiore
             if (this.startingposition == this.infoimg.length - 1){
                 this.startingposition = 0;
             }else{
                 this.startingposition++;
             }
+        },
+
+        corrente: function(index){              // Aggiunta classe my_preview-selected quando l'immagine viene selezionata
+            if(index == this.startingposition){
+                return "my_preview-selected";
+            }else{
+                return "";
+            }            
+        },
+
+        autoplay: function(){                   // Le immagini scorrono da sole (dopo avere cliccato sul pulsante next perché la funzione è inserita nel @click)
+            setInterval(() => {
+                this.startingposition++;
+
+                if (this.startingposition == this.infoimg.length){
+                    this.startingposition = 0;
+                }
+            }, 5000);
         },      
     }
-})
+});
 
 /*
 
