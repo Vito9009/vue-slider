@@ -78,7 +78,7 @@ let app = new Vue({
                 if (this.startingposition == this.infoimg.length){
                     this.startingposition = 0;
                 }
-            }, 5000);
+            }, 3000);
         },      
     }
 });
