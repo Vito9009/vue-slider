@@ -17,7 +17,7 @@ let app = new Vue({
     el: '#box',
     data:{
         startingposition: 0,
-        playandstop: "",
+        playandstop: null,
         infoimg: [
             {
                 image: 'img/01.jpg',
